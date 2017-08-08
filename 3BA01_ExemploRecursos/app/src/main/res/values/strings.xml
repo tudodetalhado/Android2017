@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">ExemploRES</string>
+    <string name="msg">Olá mundo!</string>
+    <string name="texto">Texto em português</string>
+</resources>
