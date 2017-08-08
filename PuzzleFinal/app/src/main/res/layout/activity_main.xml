@@ -1,0 +1,131 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/layout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="br.up.edu.puzzlefinal.MainActivity">
+
+    <android.support.constraint.Guideline
+        android:id="@+id/guideline"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_begin="450dp"
+        tools:layout_editor_absoluteX="0dp"
+        tools:layout_editor_absoluteY="450dp" />
+
+    <Button
+        android:id="@+id/btnEmbaralhar"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:background="@drawable/lion_face_10"
+        android:onClick="embaralhar"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/guideline" />
+
+    <Button
+        android:id="@+id/btn7"
+        style="@style/Widget.AppCompat.Button.Small"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:background="@drawable/lion_face_07"
+        app:layout_constraintBottom_toTopOf="@+id/btnEmbaralhar"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toLeftOf="@+id/btn8"
+        app:layout_constraintTop_toBottomOf="@+id/btn4" />
+
+    <Button
+        android:id="@+id/btn4"
+        style="@style/Widget.AppCompat.Button.Small"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:background="@drawable/lion_face_04"
+        app:layout_constraintBottom_toTopOf="@+id/btn7"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toLeftOf="@+id/btn5"
+        app:layout_constraintTop_toBottomOf="@+id/btn1" />
+
+    <Button
+        android:id="@+id/btn5"
+        style="@style/Widget.AppCompat.Button.Small"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:background="@drawable/lion_face_05"
+        app:layout_constraintBottom_toTopOf="@+id/btn8"
+        app:layout_constraintLeft_toRightOf="@+id/btn4"
+        app:layout_constraintRight_toLeftOf="@+id/btn6"
+        app:layout_constraintTop_toBottomOf="@+id/btn2" />
+
+    <Button
+        android:id="@+id/btn6"
+        style="@style/Widget.AppCompat.Button.Small"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:background="@drawable/lion_face_06"
+        app:layout_constraintBottom_toTopOf="@+id/btn9"
+        app:layout_constraintLeft_toRightOf="@+id/btn5"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btn3" />
+
+    <Button
+        android:id="@+id/btn1"
+        style="@style/Widget.AppCompat.Button.Small"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:background="@drawable/lion_face_01"
+        app:layout_constraintBottom_toTopOf="@+id/btn4"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toLeftOf="@+id/btn2"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/btn2"
+        style="@style/Widget.AppCompat.Button.Small"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:background="@drawable/lion_face_02"
+        app:layout_constraintBottom_toTopOf="@+id/btn5"
+        app:layout_constraintLeft_toRightOf="@+id/btn1"
+        app:layout_constraintRight_toLeftOf="@+id/btn3"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/btn3"
+        style="@style/Widget.AppCompat.Button.Small"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:background="@drawable/lion_face_03"
+        app:layout_constraintBottom_toTopOf="@+id/btn6"
+        app:layout_constraintLeft_toRightOf="@+id/btn2"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/btn8"
+        style="@style/Widget.AppCompat.Button.Small"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:background="@drawable/lion_face_08"
+        app:layout_constraintBottom_toTopOf="@+id/btnEmbaralhar"
+        app:layout_constraintLeft_toRightOf="@+id/btn7"
+        app:layout_constraintRight_toLeftOf="@+id/btn9"
+        app:layout_constraintTop_toBottomOf="@+id/btn5" />
+
+    <Button
+        android:id="@+id/btn9"
+        style="@style/Widget.AppCompat.Button.Small"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:background="@drawable/lion_face_09"
+        app:layout_constraintBottom_toTopOf="@+id/btnEmbaralhar"
+        app:layout_constraintLeft_toRightOf="@+id/btn8"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btn6" />
+
+
+</android.support.constraint.ConstraintLayout>
