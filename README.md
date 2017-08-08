@@ -1,1 +1,1 @@
-# Aulas Android 2017
+# Aplicativos desenvolvidos nas aulas de Android 2017
