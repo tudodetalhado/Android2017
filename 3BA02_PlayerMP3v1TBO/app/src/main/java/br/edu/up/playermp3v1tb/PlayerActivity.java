@@ -35,7 +35,8 @@ public class PlayerActivity extends AppCompatActivity {
     }
 
     public void parar(View view){
-        if (player != null){
+        if (player != null)
+        {
             player.stop();
             player.release();
             player = null;
