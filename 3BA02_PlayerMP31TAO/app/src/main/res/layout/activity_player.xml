@@ -10,7 +10,7 @@
     tools:context="br.edu.up.a3ba02_playermp3tao.PlayerActivity">
 
     <ImageView
-        android:id="@+id/imageView"
+        android:id="@+id/imgCapa"
         android:layout_width="wrap_content"
         android:layout_height="272dp"
         android:layout_margin="30dp"
@@ -61,7 +61,8 @@
             android:layout_height="wrap_content"
             android:layout_marginLeft="5dp"
             android:layout_marginRight="5dp"
-            app:srcCompat="@drawable/play50px" />
+            app:srcCompat="@drawable/play50px"
+            android:onClick="tocarOuPausar"/>
 
         <ImageView
             android:id="@+id/imageView3"
@@ -77,7 +78,8 @@
             android:layout_height="wrap_content"
             android:layout_marginLeft="5dp"
             android:layout_marginRight="5dp"
-            app:srcCompat="@drawable/stop50px" />
+            app:srcCompat="@drawable/stop50px"
+            android:onClick="parar"/>
 
         <ImageView
             android:id="@+id/imageView6"
