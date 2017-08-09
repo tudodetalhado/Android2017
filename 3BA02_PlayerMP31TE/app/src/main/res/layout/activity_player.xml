@@ -7,7 +7,7 @@
     android:background="@android:color/background_dark"
     android:orientation="vertical"
     android:weightSum="1"
-    tools:context="br.edu.up.a3ba02_playermp3tao.PlayerActivity">
+    tools:context="br.edu.up.a3ba02_playermp31te.PlayerActivity">
 
     <ImageView
         android:id="@+id/imgCapa"
