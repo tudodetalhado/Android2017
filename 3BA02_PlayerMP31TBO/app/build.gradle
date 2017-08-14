@@ -4,7 +4,7 @@ android {
     compileSdkVersion 26
     buildToolsVersion "26.0.0"
     defaultConfig {
-        applicationId "br.edu.up.playermp3v1tb"
+        applicationId "br.edu.up.a3ba02_playermp31tbo"
         minSdkVersion 15
         targetSdkVersion 26
         versionCode 1

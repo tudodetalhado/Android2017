@@ -27,11 +27,38 @@ public class PlayerActivity extends AppCompatActivity {
             R.raw.zeca_baleiro_disritmia
     };
 
+    public void musicaAnterior(View view){
+        musicaAtual--;
+        if (musicaAtual < 0){
+            musicaAtual = MP3s.length -1;
+        }
+        parar(null);
+        tocar();
+    }
+
+
+    int musicaAtual = 3;
     MediaPlayer player;
 
     public void tocarOuPausar(View view){
-        player = MediaPlayer.create(this, MP3s[1]);
+        player = MediaPlayer.create(this, MP3s[musicaAtual]);
         player.start();
+    }
+
+    public void tocar(){
+        player = MediaPlayer.create(this, MP3s[musicaAtual]);
+        player.start();
+    }
+
+
+
+    public void proximaMusica(View view){
+        musicaAtual++;
+        if (musicaAtual >= MP3s.length){
+            musicaAtual = 0;
+        }
+        parar(null);
+        tocar();
     }
 
     public void parar(View view){

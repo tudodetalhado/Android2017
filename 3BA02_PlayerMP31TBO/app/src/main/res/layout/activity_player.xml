@@ -55,7 +55,8 @@
             android:layout_height="wrap_content"
             android:layout_marginLeft="5dp"
             android:layout_marginRight="5dp"
-            app:srcCompat="@drawable/back50px" />
+            app:srcCompat="@drawable/back50px"
+            android:onClick="musicaAnterior"/>
 
         <ImageView
             android:id="@+id/imgPlayer"
@@ -72,7 +73,8 @@
             android:layout_height="wrap_content"
             android:layout_marginLeft="5dp"
             android:layout_marginRight="5dp"
-            app:srcCompat="@drawable/next50px" />
+            app:srcCompat="@drawable/next50px"
+            android:onClick="proximaMusica"/>
 
         <ImageView
             android:id="@+id/imageView10"
