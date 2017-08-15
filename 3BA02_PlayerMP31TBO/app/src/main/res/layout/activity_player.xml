@@ -19,7 +19,7 @@
         tools:layout_editor_absoluteY="13dp" />
 
     <TextView
-        android:id="@+id/textView3"
+        android:id="@+id/txtNome"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginBottom="5dp"
@@ -86,12 +86,13 @@
             android:onClick="parar"/>
 
         <ImageView
-            android:id="@+id/imageView11"
+            android:id="@+id/btnSequencial"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginLeft="5dp"
             android:layout_marginRight="5dp"
-            app:srcCompat="@drawable/sequencial50px" />
+            app:srcCompat="@drawable/sequencial50px"
+            android:onClick="alterarEstilo"/>
 
     </LinearLayout>
 
