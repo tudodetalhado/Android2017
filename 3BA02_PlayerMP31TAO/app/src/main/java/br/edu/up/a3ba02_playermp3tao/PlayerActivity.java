@@ -1,5 +1,6 @@
 package br.edu.up.a3ba02_playermp3tao;
 
+import android.media.Image;
 import android.media.MediaPlayer;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -9,15 +10,22 @@ import android.widget.TextView;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Random;
 
 public class PlayerActivity extends AppCompatActivity {
 
+    ImageView btnPlay;
+    ImageView btnSequencia;
+    boolean isSequencial = true;
     List<Musica> listaDeMusicas = new ArrayList<>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_player);
+
+        btnPlay = (ImageView) findViewById(R.id.btnPlay);
+        btnSequencia = (ImageView) findViewById(R.id.btnSequencia);
 
         Musica m1 = new Musica();
         m1.setId(1);
@@ -79,53 +87,87 @@ public class PlayerActivity extends AppCompatActivity {
 
     }
 
+    public void alterarSequencia(View view){
+
+        if (isSequencial == true){
+            isSequencial = false;
+            btnSequencia.setImageResource(R.drawable.random50px);
+        } else {
+            isSequencial = true;
+            btnSequencia.setImageResource(R.drawable.sequencial50px);
+        }
+
+    }
+
     MediaPlayer player;
-    int musicaAtual = 2;
+
 
     public void tocarOuPausar(View view){
 
         novaMusica();
     }
 
-    private void novaMusica() {
-        if (player == null) {
-
+    private void novaMusica()
+    {
+        if (player == null) //se o player não existe
+        {
+            btnPlay.setImageResource(R.drawable.pause50px);
             Musica musica = listaDeMusicas.get(musicaAtual);
-
             ImageView capa = (ImageView) findViewById(R.id.imgCapa);
             capa.setImageResource(musica.getCapa());
-
             TextView titulo = (TextView) findViewById(R.id.tituloMusica);
             titulo.setText(musica.getNome());
-
             player = MediaPlayer.create(this, musica.getMp3());
+            player.start();
+        }
+        else if (player.isPlaying()) // se o player está tocando...
+        {
+            btnPlay.setImageResource(R.drawable.play50px);
+            player.pause();
+        }
+        else
+            { //está pausado...
+            btnPlay.setImageResource(R.drawable.pause50px);
             player.start();
         }
     }
 
+    int musicaAtual = 2;
+    Random sorteador = new Random();
+
+
     public void proximaMusica(View view){
-        musicaAtual += musicaAtual;
+
+        if (isSequencial == true) {
+            musicaAtual++;
+            if (musicaAtual > listaDeMusicas.size() -1){
+                musicaAtual = 0;
+            }
+
+        } else {
+            musicaAtual = sorteador.nextInt(listaDeMusicas.size());
+        }
         parar();
         novaMusica();
     }
-
 
     public void musicaAnterior(View view){
-        musicaAtual -= musicaAtual;
+        musicaAtual--;
+        if (musicaAtual < 0){
+            musicaAtual = listaDeMusicas.size() -1;
+        }
+
         parar();
         novaMusica();
     }
 
-
-
     public void parar(View view){
-
         parar();
-
     }
 
     private void parar() {
         if (player != null){
+            btnPlay.setImageResource(R.drawable.play50px);
             player.stop();
             player.release(); //limpar memória;
             player = null;

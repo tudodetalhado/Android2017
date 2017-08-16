@@ -57,7 +57,7 @@
             android:onClick="musicaAnterior"/>
 
         <ImageView
-            android:id="@+id/imageView4"
+            android:id="@+id/btnPlay"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginLeft="5dp"
@@ -84,12 +84,13 @@
             android:onClick="parar"/>
 
         <ImageView
-            android:id="@+id/imageView6"
+            android:id="@+id/btnSequencia"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginLeft="5dp"
             android:layout_marginRight="5dp"
-            app:srcCompat="@drawable/sequencial50px" />
+            app:srcCompat="@drawable/sequencial50px"
+            android:onClick="alterarSequencia"/>
     </LinearLayout>
 
 </LinearLayout>
