@@ -4,13 +4,18 @@ import android.media.MediaPlayer;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.ImageView;
 
 public class PlayerActivity extends AppCompatActivity {
+
+    ImageView btnPlay;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_player);
+
+        btnPlay = (ImageView) findViewById(R.id.btnPlay);
     }
 
     MediaPlayer player;
@@ -28,13 +33,21 @@ public class PlayerActivity extends AppCompatActivity {
     int musicaAtual = 4;
 
     public void proximaMusica(View view) {
+
         musicaAtual = musicaAtual + 1;
+        if (musicaAtual > MP3s.length - 1) {
+            musicaAtual = 0;
+        }
         parar();
         tocar();
     }
 
     public void musicaAnterior(View view) {
         musicaAtual = musicaAtual - 1;
+        if (musicaAtual < 0) {
+            musicaAtual = MP3s.length - 1;
+        }
+
         parar();
         tocar();
     }
@@ -48,8 +61,17 @@ public class PlayerActivity extends AppCompatActivity {
     }
 
     public void tocar() {
-        player = MediaPlayer.create(this, MP3s[musicaAtual]);
-        player.start();
+        if (player == null) { //se o player não está tocando ou não existe
+            btnPlay.setImageResource(R.drawable.pause50px);
+            player = MediaPlayer.create(this, MP3s[musicaAtual]);
+            player.start();
+        } else if (player.isPlaying()) { //se está tocando
+            btnPlay.setImageResource(R.drawable.play50px);
+            player.pause();
+        } else {
+            btnPlay.setImageResource(R.drawable.pause50px);
+            player.start();
+        }
     }
 
     public void parar() {
