@@ -27,17 +27,37 @@ public class PlayerActivity extends AppCompatActivity {
 
     int musicaAtual = 4;
 
+    public void proximaMusica(View view) {
+        musicaAtual = musicaAtual + 1;
+        parar();
+        tocar();
+    }
+
+    public void musicaAnterior(View view) {
+        musicaAtual = musicaAtual - 1;
+        parar();
+        tocar();
+    }
+
     public void tocarOuPausar(View view){
+        tocar();
+    }
+
+    public void parar(View view){
+        parar();
+    }
+
+    public void tocar() {
         player = MediaPlayer.create(this, MP3s[musicaAtual]);
         player.start();
     }
 
-    public void parar(View view){
-
+    public void parar() {
         if (player != null && player.isPlaying()) {
             player.stop();
             player.release(); //liberar memória
             player = null;
         }
     }
+
 }
