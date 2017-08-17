@@ -4,13 +4,18 @@ import android.media.MediaPlayer;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.ImageView;
 
 public class PlayerActivity extends AppCompatActivity {
+
+    ImageView btnPlay;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_player);
+
+        btnPlay = (ImageView) findViewById(R.id.btnPlay);
     }
 
     MediaPlayer player;
@@ -27,13 +32,41 @@ public class PlayerActivity extends AppCompatActivity {
 
     int musicaAtual = 3;
 
+    public void proximaMusica(View view){
+        musicaAtual = musicaAtual + 1;
+        parar();
+        tocar();
+    }
+
+    public void musicaAnterior(View view){
+        musicaAtual = musicaAtual - 1;
+        parar();
+        tocar();
+    }
+
+    public void tocar(){
+        if (player == null) { //Se o player não existe
+            btnPlay.setImageResource(R.drawable.pause50px);
+            player = MediaPlayer.create(this, MP3s[musicaAtual]);
+            player.start();
+        } else if (player.isPlaying()) { //Se o player está tocando.
+            btnPlay.setImageResource(R.drawable.play50px);
+            player.pause();
+        } else { //volta a tocar
+            btnPlay.setImageResource(R.drawable.pause50px);
+            player.start();
+        }
+    }
+
     public void tocarOuPausar(View view){
-        player = MediaPlayer.create(this, MP3s[musicaAtual]);
-        player.start();
+        tocar();
     }
 
     public void parar(View view){
+        parar();
+    }
 
+    public void parar(){
         if (player != null && player.isPlaying()){
             player.stop();
             player.release(); //limpar memória
