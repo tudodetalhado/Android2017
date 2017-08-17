@@ -34,12 +34,21 @@ public class PlayerActivity extends AppCompatActivity {
 
     public void proximaMusica(View view){
         musicaAtual = musicaAtual + 1;
+        if (musicaAtual > MP3s.length -1){
+            musicaAtual = 0;
+        }
+
         parar();
         tocar();
     }
 
     public void musicaAnterior(View view){
         musicaAtual = musicaAtual - 1;
+
+        if (musicaAtual < 0){
+            musicaAtual = MP3s.length -1;
+        }
+
         parar();
         tocar();
     }
