@@ -3,28 +3,36 @@ package br.edu.up.playermp3v1tb;
 import android.media.MediaPlayer;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.MotionEvent;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.SeekBar;
 import android.widget.TextView;
 
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
-public class PlayerActivity extends AppCompatActivity {
+public class PlayerActivity extends AppCompatActivity
+    implements MediaPlayer.OnCompletionListener, View.OnTouchListener
 
+   {
 
     boolean isSequencial = true;
     ImageView btnPlay;
     ImageView capa;
     TextView txtNome;
-    List<Musica> listaDeMusicas = new ArrayList<>();
+    List<Musica> listaDeMusicas;
+    SeekBar seekBar;
 
      @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_player);
+
+         seekBar = (SeekBar) findViewById(R.id.seekBar);
+         seekBar.setOnTouchListener(this);
 
          btnPlay = (ImageView) findViewById(R.id.imgPlayer);
          capa = (ImageView) findViewById(R.id.capa);
@@ -47,6 +55,8 @@ public class PlayerActivity extends AppCompatActivity {
     }
 
     private List<Musica> carregarMusicas() {
+
+        listaDeMusicas = new ArrayList<>();
 
         Musica m1 = new Musica();
         m1.setId(1);
@@ -136,6 +146,12 @@ public class PlayerActivity extends AppCompatActivity {
             txtNome.setText(musica.getNome());
             btnPlay.setImageResource(R.drawable.pause50px);
             player = MediaPlayer.create(this, musica.getMp3());
+
+            int milisegundoDaMusica = player.getDuration();
+            seekBar.setMax(milisegundoDaMusica);
+
+            //Atribui a implementação da interface ao player.
+            player.setOnCompletionListener(this);
             player.start();
         }
         else if (player.isPlaying()){
@@ -166,4 +182,20 @@ public class PlayerActivity extends AppCompatActivity {
         }
 
     }
-}
+
+       //Este método será executado sempre
+       //que acabar a execução de uma música.
+       @Override
+       public void onCompletion(MediaPlayer mediaPlayer) {
+           proximaMusica(null);
+       }
+
+       @Override
+       public boolean onTouch(View view, MotionEvent motionEvent) {
+
+           int progessoDaBarra = seekBar.getProgress();
+           player.seekTo(progessoDaBarra);
+
+           return false;
+       }
+   }
