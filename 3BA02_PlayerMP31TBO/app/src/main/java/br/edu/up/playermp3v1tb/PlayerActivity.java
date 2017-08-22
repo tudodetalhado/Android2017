@@ -1,6 +1,7 @@
 package br.edu.up.playermp3v1tb;
 
 import android.media.MediaPlayer;
+import android.os.Handler;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.MotionEvent;
@@ -153,6 +154,9 @@ public class PlayerActivity extends AppCompatActivity
             //Atribui a implementação da interface ao player.
             player.setOnCompletionListener(this);
             player.start();
+
+            atualizarBarraDeProgresso();
+
         }
         else if (player.isPlaying()){
             btnPlay.setImageResource(R.drawable.play50px);
@@ -163,7 +167,26 @@ public class PlayerActivity extends AppCompatActivity
         }
     }
 
-    public void proximaMusica(View view){
+     private void atualizarBarraDeProgresso() {
+
+       if (player != null && player.isPlaying()) {
+
+         int position = player.getCurrentPosition();
+         seekBar.setProgress(position);
+
+         Runnable processo = new Runnable() {
+           @Override
+           public void run() {
+             atualizarBarraDeProgresso();
+           }
+         };
+
+         new Handler().postDelayed(processo, 1000);
+       }
+
+     }
+
+       public void proximaMusica(View view){
         musicaAtual++;
         if (musicaAtual >= listaDeMusicas.size())
         {
