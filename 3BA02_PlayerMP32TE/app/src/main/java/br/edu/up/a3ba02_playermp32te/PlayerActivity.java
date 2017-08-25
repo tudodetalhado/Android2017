@@ -1,6 +1,7 @@
 package br.edu.up.a3ba02_playermp32te;
 
 import android.media.MediaPlayer;
+import android.os.Handler;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.MotionEvent;
@@ -136,6 +137,10 @@ public class PlayerActivity extends AppCompatActivity
             player.setOnCompletionListener(this);
 
             player.start();
+
+            atualizarBarra();
+
+
         } else if (player.isPlaying()) { //Se o player está tocando.
             btnPlay.setImageResource(R.drawable.play50px);
             player.pause();
@@ -143,6 +148,26 @@ public class PlayerActivity extends AppCompatActivity
             btnPlay.setImageResource(R.drawable.pause50px);
             player.start();
         }
+    }
+
+    private void atualizarBarra() {
+
+      if (player.isPlaying()) {
+
+        int position = player.getCurrentPosition();
+        seekBar.setProgress(position);
+
+        Runnable processo = new Runnable() {
+          @Override
+          public void run() {
+            atualizarBarra();
+          }
+        };
+
+        new Handler().postDelayed(processo, 1000);
+
+      }
+
     }
 
     public void tocarOuPausar(View view){

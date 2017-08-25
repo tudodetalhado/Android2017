@@ -1,6 +1,7 @@
 package br.edu.up.a3ba02_playermp31te;
 
 import android.media.MediaPlayer;
+import android.os.Handler;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.MotionEvent;
@@ -129,14 +130,14 @@ public class PlayerActivity extends AppCompatActivity
             titulo.setText(musica.getNome());
             btnPlay.setImageResource(R.drawable.pause50px);
             player = MediaPlayer.create(this, musica.getMp3());
-
           int duration = player.getDuration();
           seekBar.setMax(duration);
-
-
           player.setOnCompletionListener(this);
+          player.start();
 
-            player.start();
+          atualizarBarra();
+
+
         } else if (player.isPlaying()) { //se está tocando
             btnPlay.setImageResource(R.drawable.play50px);
             player.pause();
@@ -146,7 +147,23 @@ public class PlayerActivity extends AppCompatActivity
         }
     }
 
-    public void parar() {
+  private void atualizarBarra() {
+
+    if (player.isPlaying()) {
+      int position = player.getCurrentPosition();
+      seekBar.setProgress(position);
+
+      Runnable processo = new Runnable() {
+        @Override
+        public void run() {
+          atualizarBarra();
+        }
+      };
+      new Handler().postDelayed(processo, 1000);
+    }
+  }
+
+  public void parar() {
       if (player != null) {
             player.stop();
             player.release(); //liberar memória
